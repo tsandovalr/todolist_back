@@ -7,6 +7,7 @@ import passportMiddleware from './middlewares/passport';
 const app = express();
 
 import authRoutes from './routes/auth';
+import taskRoutes from './routes/task';
 import userRoutes from './routes/user';
 
 //settings
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
     res.send(`La API esta en http://localhost:${app.get('port')}`)
 });
 app.use(authRoutes);
+app.use(taskRoutes);
 app.use(userRoutes);
 
 export default app;
