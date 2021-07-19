@@ -1,4 +1,5 @@
 import app from './app';
+require('dotenv').config();
 import './database'
 
 app.listen(app.get('port'));

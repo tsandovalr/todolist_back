@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const config_1 = __importDefault(require("./config"));
-const dbOptions = {
-    useNewUrlParser: true,
+require('dotenv').config();
+const MONGODB_URI = process.env.MONGODB_URI;
+mongoose_1.default.connect(MONGODB_URI, {
     useUnifiedTopology: true,
-    useCreateIndex: true,
-};
-mongoose_1.default.connect(config_1.default.DB.URI, dbOptions);
+    useNewUrlParser: true,
+    useCreateIndex: true
+});
 const connection = mongoose_1.default.connection;
 connection.once('open', () => {
     console.log('MongoDB connection succesfull');

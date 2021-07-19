@@ -1,14 +1,15 @@
-import mongoose, { ConnectOptions} from 'mongoose';
+import mongoose from 'mongoose';
 import config from './config';
+require('dotenv').config();
 
+const MONGODB_URI:string = process.env.MONGODB_URI!;
 
-const dbOptions: ConnectOptions = {
-    useNewUrlParser: true,
+mongoose.connect(MONGODB_URI, { 
     useUnifiedTopology: true,
-    useCreateIndex: true,
-}
+    useNewUrlParser:true,
+    useCreateIndex : true
+})
 
-mongoose.connect(config.DB.URI, dbOptions);
 const connection = mongoose.connection;
 
 connection.once('open', () => {

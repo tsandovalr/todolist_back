@@ -10,6 +10,7 @@ const cors_1 = __importDefault(require("cors"));
 const passport_2 = __importDefault(require("./middlewares/passport"));
 const app = express_1.default();
 const auth_1 = __importDefault(require("./routes/auth"));
+const task_1 = __importDefault(require("./routes/task"));
 const user_1 = __importDefault(require("./routes/user"));
 //settings
 app.set('port', process.env.PORT || 3000);
@@ -28,5 +29,6 @@ app.get('/', (req, res) => {
     res.send(`La API esta en http://localhost:${app.get('port')}`);
 });
 app.use(auth_1.default);
+app.use(task_1.default);
 app.use(user_1.default);
 exports.default = app;
